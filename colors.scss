@@ -1,0 +1,81 @@
+.colors {
+  // common
+  background-color: #abb2bf;
+  // 注释
+  // common.comment
+  background-color: #676f7d;
+  // 常量 / 内置类型 / 可以决定内置类型的关键字 ( class / interface ) / 内置属性
+  // common.constant
+  // common.storage.type
+  // common.support.type
+  // common.support.type.property-name
+  // common.support.variable
+  background-color: #56b6c2;
+  // 数字字面量
+  // common.constant.number
+  background-color: #c678dd;
+  // 函数
+  // common.entity.name.function
+  // common.entity.other.inherited-class
+  background-color: #98c379;
+  // 类型 / class / 链式调用的自定义变量
+  // common.entity.name.type
+  // common.support.class
+  // common.variable.other
+  background-color: #61afef;
+  // 关键字 / 内置变量 ( this )
+  // common.keyword
+  // common.storage.modifier
+  // common.variable.language
+  background-color: #e06c75;
+  // 字符串
+  // common.string
+  background-color: #e5c07b;
+  // 参数变量
+  // common.variable.parameter
+  background-color: #d19a66;
+
+  // <!-- 背景色 -->
+  // 选中 ( selection / hover )
+  background-color: #383e4a;
+  // 高层
+  background-color: #2f333d;
+  // 中层
+  background-color: #282c34;
+  // 底层
+  background-color: #21252b;
+
+  // <!-- 文字 -->
+  // 普通
+  background-color: #abb2bf;
+  // 灰色
+  background-color: #676f7d;
+  // 高亮
+  background-color: #d7dae0;
+
+  // <!-- 边框 -->
+  // 普通
+  background-color: #88898a;
+  // 搜索 - 选中
+  background-color: #b17b34;
+  // 搜索 - 未选中
+  background-color: #7a5826;
+
+  // <!-- 其它 -->
+  // 按钮 / 标签 - 背景色
+  background-color: #528bff;
+  // 按钮 / 标签 - 文字
+  background-color: #ffffff;
+  // 游标 - 文字
+  background-color: #d7dae0;
+
+  // 特殊
+  // diffEditor.insertedTextBackground
+  background-color: #00809b33;
+  // scrollbarSlider.activeBackground
+  background-color: #747d9180;
+  // scrollbarSlider.background
+  background-color: #4e566680;
+  // scrollbarSlider.hoverBackground
+  background-color: #5a637580;
+}

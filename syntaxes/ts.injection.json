@@ -1,0 +1,477 @@
+{
+  "scopeName": "ts.injection",
+  "injectionSelector": "L:source.ts",
+  "patterns": [
+    {
+      "include": "#eslint-block"
+    },
+    {
+      "include": "#eslint-single-line"
+    }
+  ],
+  "repository": {
+    "eslint-block": {
+      "name": "comment.block.ts",
+      "begin": "(^[ \\t]+)?(/\\*)\\s*\\**\\s*(eslint|eslint-disable|eslint-enable|eslint-disable-line|eslint-disable-next-line|eslint-env|globals|global|exported)\\s+",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.whitespace.comment.leading.ts"
+        },
+        "2": {
+          "name": "punctuation.definition.comment.ts"
+        },
+        "3": {
+          "patterns": [
+            {
+              "include": "#eslint-key"
+            }
+          ]
+        }
+      },
+      "end": "\\*/",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.comment.ts"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#eslint-value"
+        }
+      ]
+    },
+    "eslint-single-line": {
+      "begin": "(^[ \\t]+)?(//)\\s*(eslint|eslint-disable|eslint-enable|eslint-disable-line|eslint-disable-next-line|eslint-env|globals|global|exported)\\s+",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.whitespace.comment.leading.ts"
+        },
+        "2": {
+          "name": "comment.line.double-slash.ts"
+        },
+        "3": {
+          "patterns": [
+            {
+              "include": "#eslint-key"
+            }
+          ]
+        }
+      },
+      "end": "(?=$)",
+      "contentName": "comment.line.double-slash.ts",
+      "patterns": [
+        {
+          "include": "#eslint-value"
+        }
+      ]
+    },
+
+    "eslint-key": {
+      "patterns": [
+        {
+          "include": "#eslint-disable-next-line-key"
+        },
+        {
+          "include": "#eslint-disable-line-key"
+        },
+        {
+          "include": "#eslint-disable-key"
+        },
+        {
+          "include": "#eslint-enable-key"
+        },
+        {
+          "include": "#eslint-env-key"
+        },
+        {
+          "include": "#eslint-global-key"
+        },
+        {
+          "include": "#eslint-exported-key"
+        },
+        {
+          "name": "keyword.eslint.ts",
+          "match": "eslint"
+        }
+      ]
+    },
+    "eslint-value": {
+      "patterns": [
+        {
+          "include": "#eslint-disable-next-line-value"
+        },
+        {
+          "include": "#eslint-disable-line-value"
+        },
+        {
+          "include": "#eslint-disable-value"
+        },
+        {
+          "include": "#eslint-enable-value"
+        },
+        {
+          "include": "#eslint-env-value"
+        },
+        {
+          "include": "#eslint-global-value"
+        },
+        {
+          "include": "#eslint-exported-value"
+        },
+        {
+          "include": "#comment"
+        },
+        {
+          "include": "#eslint-rules"
+        }
+      ]
+    },
+
+    "eslint-disable-key": {
+      "name": "keyword.eslint.disable.ts",
+      "match": "eslint-disable"
+    },
+    "eslint-disable-value": {
+      "name": "meta.eslint.disable.ts",
+      "begin": "(?<=eslint-disable\\s+)",
+      "end": "(?=\\n|\\*/)",
+      "patterns": [
+        {
+          "include": "#comment"
+        },
+        {
+          "include": "#eslint-rules"
+        }
+      ]
+    },
+    "eslint-disable-line-key": {
+      "name": "keyword.eslint.disable-line.ts",
+      "match": "eslint-disable-line"
+    },
+    "eslint-disable-line-value": {
+      "name": "meta.eslint.disable-line.ts",
+      "begin": "(?<=eslint-disable-line\\s+)",
+      "end": "(?=\\n|\\*/)",
+      "patterns": [
+        {
+          "include": "#comment"
+        },
+        {
+          "include": "#eslint-rules"
+        }
+      ]
+    },
+    "eslint-disable-next-line-key": {
+      "name": "keyword.eslint.disable-next-line.ts",
+      "match": "eslint-disable-next-line"
+    },
+    "eslint-disable-next-line-value": {
+      "name": "meta.eslint.disable-next-line.ts",
+      "begin": "(?<=eslint-disable-next-line\\s+)",
+      "end": "(?=\\n|\\*/)",
+      "patterns": [
+        {
+          "include": "#comment"
+        },
+        {
+          "include": "#eslint-rules"
+        }
+      ]
+    },
+    "eslint-enable-key": {
+      "name": "keyword.eslint.enable.ts",
+      "match": "eslint-enable"
+    },
+    "eslint-enable-value": {
+      "name": "meta.eslint.enable.ts",
+      "begin": "(?<=eslint-enable\\s+)",
+      "end": "(?=\\n|\\*/)",
+      "patterns": [
+        {
+          "include": "#comment"
+        },
+        {
+          "include": "#eslint-rules"
+        }
+      ]
+    },
+    "eslint-env-key": {
+      "name": "keyword.eslint.env.ts",
+      "match": "eslint-env"
+    },
+    "eslint-env-value": {
+      "name": "meta.eslint.env.ts",
+      "begin": "(?<=eslint-env\\s+)",
+      "end": "(?=\\n|\\*/)",
+      "patterns": [
+        {
+          "name": "support.eslint.env.ts",
+          "match": "(\\w|/|-)+"
+        },
+        {
+          "name": "punctuation.separator.comma.ts",
+          "match": ","
+        }
+      ]
+    },
+    "eslint-global-key": {
+      "name": "keyword.eslint.global.ts",
+      "match": "(globals|global)"
+    },
+    "eslint-global-value": {
+      "name": "meta.eslint.global.ts",
+      "begin": "(?<=global\\s+)",
+      "end": "(?=\\n|\\*/)",
+      "patterns": [
+        {
+          "match": "((?:\\w|/|-)+)\\s*(:)\\s*((?:\\w|/|-)+)",
+          "captures": {
+            "1": {
+              "name": "support.eslint.global.key.ts"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.ts"
+            },
+            "3": {
+              "name": "support.eslint.global.value.ts"
+            }
+          }
+        },
+        {
+          "name": "support.eslint.global.key.ts",
+          "match": "(\\w|/|-)+"
+        },
+        {
+          "name": "punctuation.separator.comma.ts",
+          "match": ","
+        }
+      ]
+    },
+    "eslint-exported-key": {
+      "name": "keyword.eslint.exported.ts",
+      "match": "exported"
+    },
+    "eslint-exported-value": {
+      "name": "meta.eslint.exported.ts",
+      "begin": "(?<=exported\\s+)",
+      "end": "(?=\\n|\\*/)",
+      "patterns": [
+        {
+          "match": "((?:\\w|/|-)+)\\s*(:)\\s*((?:\\w|/|-)+)",
+          "captures": {
+            "1": {
+              "name": "support.eslint.exported.key.ts"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.ts"
+            },
+            "3": {
+              "name": "support.eslint.exported.value.ts"
+            }
+          }
+        },
+        {
+          "name": "support.eslint.exported.key.ts",
+          "match": "(\\w|/|-)+"
+        },
+        {
+          "name": "punctuation.separator.comma.ts",
+          "match": ","
+        }
+      ]
+    },
+
+    "eslint-rules": {
+      "begin": "",
+      "end": "(?=--|\\n|\\*/)",
+      "patterns": [
+        {
+          "name": "support.eslint.rule.ts",
+          "begin": "(?:((?:\\w|/|-)+)|(?:(\")((?:\\w|/|-)+)(\")))\\s*(:)\\s*",
+          "beginCaptures": {
+            "1": {
+              "name": "support.eslint.rule.id.ts"
+            },
+            "2": {
+              "name": "support.eslint.rule.id.ts string.quoted.double.ts punctuation.definition.string.begin.ts"
+            },
+            "3": {
+              "name": "support.eslint.rule.id.ts string.quoted.double.ts"
+            },
+            "4": {
+              "name": "support.eslint.rule.id.ts string.quoted.double.ts punctuation.definition.string.end.ts"
+            },
+            "5": {
+              "name": "punctuation.separator.key-value.ts"
+            }
+          },
+          "end": "(?=--|,|\\}|\\n|\\*/)",
+          "patterns": [
+            {
+              "include": "#json"
+            }
+          ]
+        },
+        {
+          "name": "support.eslint.rule.ts support.eslint.rule.id.ts",
+          "match": "(\\w|/|-)+"
+        },
+        {
+          "name": "punctuation.separator.comma.ts",
+          "match": ","
+        }
+      ]
+    },
+
+    "json": {
+      "patterns": [
+        {
+          "include": "#string"
+        },
+        {
+          "include": "#number"
+        },
+        {
+          "include": "#boolean"
+        },
+        {
+          "include": "#array"
+        },
+        {
+          "include": "#object"
+        }
+      ]
+    },
+
+    "array": {
+      "name": "meta.array.literal.ts",
+      "begin": "\\[",
+      "beginCaptures": {
+        "0": {
+          "name": "meta.brace.square.ts"
+        }
+      },
+      "end": "\\]",
+      "endCaptures": {
+        "0": {
+          "name": "meta.brace.square.ts"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#json"
+        },
+        {
+          "name": "punctuation.separator.comma.ts",
+          "match": ","
+        }
+      ]
+    },
+    "object": {
+      "name": "meta.objectliteral.ts",
+      "begin": "\\{",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.block.ts"
+        }
+      },
+      "end": "\\}",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.block.ts"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#object-member"
+        }
+      ]
+    },
+    "object-member": {
+      "patterns": [
+        {
+          "name": "meta.object.member.ts",
+          "begin": "(?:((?:\\w|/|-)+)|(?:(\")((?:\\w|/|-)?)(\")))\\s*(:)\\s*",
+          "beginCaptures": {
+            "1": {
+              "name": "meta.object-literal.key.ts"
+            },
+            "2": {
+              "name": "meta.object-literal.key.ts string.quoted.double.ts punctuation.definition.string.begin.ts"
+            },
+            "3": {
+              "name": "meta.object-literal.key.ts string.quoted.double.ts"
+            },
+            "4": {
+              "name": "meta.object-literal.key.ts string.quoted.double.ts punctuation.definition.string.end.ts"
+            },
+            "5": {
+              "name": "meta.object-literal.key.ts punctuation.separator.key-value.ts"
+            }
+          },
+          "end": "(?=--|,|\\}|\\n|\\*/)",
+          "patterns": [
+            {
+              "include": "#json"
+            }
+          ]
+        },
+        {
+          "name": "punctuation.separator.comma.ts",
+          "match": ","
+        }
+      ]
+    },
+
+    "string": {
+      "name": "string.quoted.double.ts",
+      "begin": "\"",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.ts"
+        }
+      },
+      "end": "(\")|((?:[^\\\\\\n])$)",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.definition.string.end.ts"
+        },
+        "2": {
+          "name": "invalid.illegal.newline.ts"
+        }
+      },
+      "patterns": [
+        {
+          "match": "\\\\(x[0-9A-Fa-f]{2}|u[0-9A-Fa-f]{4}|u\\{[0-9A-Fa-f]+\\}|[0-2][0-7]{0,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.|$)"
+        }
+      ]
+    },
+    "number": {
+      "name": "constant.numeric.decimal.ts",
+      "match": "(?:(?:\\b[0-9][0-9_]*\\b)|(?:\\b\\.[0-9][0-9_]*\\b)|(?:\\b[0-9][0-9_]*\\.\\b)|(?:\\b[0-9][0-9_]*\\.[0-9][0-9_]*\\b))"
+    },
+    "boolean": {
+      "patterns": [
+        {
+          "name": "constant.language.boolean.true.ts",
+          "match": "(?<![_$[:alnum:]])(?:(?<=\\.\\.\\.)|(?<!\\.))true(?![_$[:alnum:]])(?:(?=\\.\\.\\.)|(?!\\.))"
+        },
+        {
+          "name": "constant.language.boolean.false.ts",
+          "match": "(?<![_$[:alnum:]])(?:(?<=\\.\\.\\.)|(?<!\\.))false(?![_$[:alnum:]])(?:(?=\\.\\.\\.)|(?!\\.))"
+        }
+      ]
+    },
+
+    "comment": {
+      "name": "comment.line.double-dash.ts",
+      "begin": "(--)\\s+",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.definition.comment.ts"
+        }
+      },
+      "end": "(?=\\n|\\*/)"
+    }
+  }
+}

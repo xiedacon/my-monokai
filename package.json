@@ -1,0 +1,37 @@
+{
+  "name": "my-monokai",
+  "displayName": "My Monokai Theme",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.73.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "my-monokai",
+        "uiTheme": "vs-dark",
+        "path": "./themes/my-monokai-color-theme.json"
+      }
+    ],
+    "grammars": [
+      {
+        "path": "./syntaxes/js.injection.json",
+        "scopeName": "js.injection",
+        "injectTo": [
+          "source.js"
+        ]
+      },
+      {
+        "path": "./syntaxes/ts.injection.json",
+        "scopeName": "ts.injection",
+        "injectTo": [
+          "source.ts"
+        ]
+      }
+    ]
+  }
+}
