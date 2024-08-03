@@ -1,0 +1,154 @@
+{
+  "scopeName": "go.injection",
+  "injectionSelector": "L:source.go",
+  "patterns": [
+    {
+      "include": "#source-file"
+    },
+    {
+      "include": "#statement"
+    }
+  ],
+  "repository": {
+    "source-file": {
+      "patterns": [
+        {
+          "include": "#package-clause"
+        },
+        {
+          "include": "#import-decl"
+        },
+        {
+          "include": "#top-level-decl"
+        }
+      ]
+    },
+
+    "package-clause": {
+      "name": "meta.package.go",
+      "begin": "\\b(package)\\s+",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.package.go"
+        }
+      },
+      "end": "(?!\\G)",
+      "patterns": [
+        {
+          "include": "source.go"
+        }
+      ]
+    },
+
+    "import-decl": {
+      "name": "meta.import.go",
+      "begin": "\\b(import)\\s+",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.import.go"
+        }
+      },
+      "end": "(?!\\G)",
+      "patterns": [
+        {
+          "include": "source.go"
+        }
+      ]
+    },
+
+    "top-level-decl": {
+      "patterns": [
+        {
+          "include": "#declaration"
+        }
+      ]
+    },
+
+    "declaration": {
+      "patterns": [
+        {
+          "include": "#const-decl"
+        },
+        {
+          "include": "#var-decl"
+        }
+      ]
+    },
+
+    "const-decl": {
+      "name": "meta.const.decl.go",
+      "begin": "\\b(const)\\b",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.const.go"
+        }
+      },
+      "end": "(?=$)",
+      "patterns": [
+        {
+          "include": "source.go"
+        }
+      ]
+    },
+    "var-decl": {
+      "name": "meta.var.decl.go",
+      "begin": "\\b(var)\\b",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.var.go"
+        }
+      },
+      "end": "(?=$)",
+      "patterns": [
+        {
+          "include": "source.go"
+        }
+      ]
+    },
+
+    "statement": {
+      "patterns": [
+        {
+          "include": "#short-var-decl"
+        }
+      ]
+    },
+    "short-var-decl": {
+      "name": "meta.short-var.decl.go",
+      "match": "\\b\\w+(?:\\,\\s*\\w+)*(?=\\s*:=)",
+      "captures": {
+        "0": {
+          "patterns": [
+            {
+              "include": "#delimiters"
+            },
+            {
+              "match": "\\d\\w*",
+              "name": "invalid.illegal.identifier.go"
+            },
+            {
+              "match": "\\w+",
+              "name": "variable.other.assignment.go"
+            }
+          ]
+        }
+      }
+    },
+    "delimiters": {
+      "patterns": [
+        {
+          "match": "\\,",
+          "name": "punctuation.other.comma.go"
+        },
+        {
+          "match": "\\.(?!\\.\\.)",
+          "name": "punctuation.other.period.go"
+        },
+        {
+          "match": ":(?!=)",
+          "name": "punctuation.other.colon.go"
+        }
+      ]
+    }
+  }
+}

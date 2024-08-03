@@ -31,7 +31,17 @@
         "injectTo": [
           "source.ts"
         ]
+      },
+      {
+        "path": "./syntaxes/go.injection.json",
+        "scopeName": "go.injection",
+        "injectTo": [
+          "source.go"
+        ]
       }
     ]
+  },
+  "dependencies": {
+    "@types/node": "^22.1.0"
   }
 }

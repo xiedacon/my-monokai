@@ -14,9 +14,9 @@ My vscode color theme, based on [One Monokai Theme](https://marketplace.visualst
 
 ![typescript](https://raw.githubusercontent.com/xiedacon/my-monokai/master/screenshots/typescript.png)
 
-### Go
+### Golang
 
-// TODO
+![golang](https://raw.githubusercontent.com/xiedacon/my-monokai/master/screenshots/golang.png)
 
 ## License
 

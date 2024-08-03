@@ -72,7 +72,7 @@
     "editor.background": "#282c34",
     "editor.lineHighlightBackground": "#383e4a",
     "editor.selectionBackground": "#383e4a",
-    "editor.inactiveSelectionBackground": "#383e4a",
+    "editor.inactiveSelectionBackground": "#383e4a00",
     "editor.selectionHighlightBorder": "#88898a",
     "editor.wordHighlightBackground": "#00000000",
     "editor.wordHighlightBorder": "#88898a",
@@ -90,7 +90,7 @@
     "editorGroup.dropIntoPromptForeground": "#abb2bf",
     "editorGroupHeader.tabsBackground": "#21252b",
     "editorHoverWidget.background": "#282c34",
-    "editorIndentGuide.activeBackground": "#88898a",
+    "editorIndentGuide.activeBackground1": "#88898a",
     "editorLineNumber.foreground": "#676f7d",
     "editorLineNumber.activeForeground": "#abb2bf",
     "editorSuggestWidget.background": "#282c34",
@@ -143,9 +143,9 @@
     "terminal.border": "#2f333d",
     "terminal.selectionBackground": "#383e4a",
     "terminal.inactiveSelectionBackground": "#383e4a",
-    "terminal.findMatchBackground": "#282c34",
+    "terminal.findMatchBackground": "#282c3400",
     "terminal.findMatchBorder": "#b17b34",
-    "terminal.findMatchHighlightBackground": "#282c34",
+    "terminal.findMatchHighlightBackground": "#282c3400",
     "terminal.findMatchHighlightBorder": "#7a5826",
     "terminal.tab.activeBorder": "#d7dae0",
     "terminalCursor.foreground": "#d7dae0",
@@ -534,11 +534,27 @@
       "settings": {
         "foreground": "#98c379"
       }
-    }
+    },
     // <!-- js / ts: end -->
 
     // <!-- go: start -->
-    // TODO
+    {
+      "name": "go",
+      "scope": ["variable.other.go", "variable.other.assignment.go"],
+      "settings": {
+        "foreground": "#abb2bf"
+      }
+    },
+    {
+      "name": "go",
+      "scope": [
+        "meta.const.decl.go variable.other.assignment.go",
+        "meta.short-var.decl.go variable.other.assignment.go"
+      ],
+      "settings": {
+        "foreground": "#61afef"
+      }
+    }
     // <!-- go: end -->
 
     // <!-- css / scss / less / sass: start -->

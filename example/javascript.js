@@ -9,6 +9,10 @@ const statusCodes = {
 };
 
 class Handler {
+  responses = {
+    "/ping": "pong",
+  };
+
   handle(req, res) {
     console.log("Got:", req.url);
 
@@ -26,7 +30,7 @@ class Handler {
 
   pong(req, res) {
     res.statusCode = statusCodes.ok;
-    res.end("pong");
+    res.end(this.responses[req.url || ""]);
   }
 
   notFound(req, res) {
@@ -35,6 +39,10 @@ class Handler {
   }
 }
 
-const handler = new Handler();
+function main() {
+  const handler = new Handler();
 
-createServer(handler.handle.bind(handler)).listen(3000);
+  createServer(handler.handle.bind(handler)).listen(3000);
+}
+
+main();
